@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chats UI</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <style>
+    body {
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .icon-gray {
+      filter: brightness(0) saturate(100%) invert(60%) sepia(6%) saturate(300%) hue-rotate(180deg);
+    }
+
+    .icon-white {
+      filter: brightness(0) invert(1);
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="app" class="w-full min-h-screen flex flex-col">
+
+  <!-- SCROLL AREA -->
+  <div class="flex-1 overflow-y-auto pb-28">
+
+    <!-- HEADER -->
+    <div class="flex items-center justify-between p-4">
+      
+      <div class="flex items-center gap-3">
+        <img src="https://favouradjenuvurhe.github.io/Dating-Me/img/026607138645739.622119b67e5e8.png" class="w-10 h-10 rounded-full">
+
+        <div>
+          <p class="text-xs text-gray-400">Welcome back</p>
+          <p class="text-sm font-semibold">Your Chats</p>
+        </div>
+      </div>
+
+      <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+        <img src="https://www.svgrepo.com/show/528866/bell.svg" class="w-5 h-5 icon-gray">
+      </div>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="px-4 mb-4">
+      <div class="flex items-center bg-gray-100 rounded-full px-4 py-3">
+        <img src="https://www.svgrepo.com/show/532555/search.svg" class="w-4 h-4 icon-gray mr-2">
+        <input class="bg-transparent outline-none text-sm w-full" placeholder="Search chats">
+      </div>
+    </div>
+
+    <!-- STORIES -->
+    <div class="px-4 mb-3">
+      <p class="text-sm font-semibold mb-2">Stories</p>
+
+      <div class="flex gap-3 overflow-x-auto pb-2">
+        <div v-for="(s,i) in stories" :key="i" class="text-center">
+          <div class="w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-purple-700 to-pink-500">
+            <img :src="s.img" class="w-full h-full rounded-full border-2 border-white">
+          </div>
+          <p class="text-xs mt-1 text-gray-600">{{ s.name }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAT LIST -->
+    <div class="px-4 space-y-1">
+
+      <div v-for="(c,i) in chats" :key="i"
+           class="flex justify-between items-center py-3 border-b border-gray-100">
+
+        <div class="flex items-center gap-3">
+
+          <div class="relative">
+            <img :src="c.img" class="w-12 h-12 rounded-full">
+            <span v-if="c.online"
+              class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+          </div>
+
+          <div>
+            <p class="font-semibold text-sm">{{ c.name }}</p>
+            <p class="text-xs text-gray-500 truncate w-[180px]">{{ c.message }}</p>
+          </div>
+
+        </div>
+
+        <div class="text-right">
+          <p class="text-xs text-gray-400">{{ c.time }}</p>
+
+          <div v-if="c.unread"
+               class="bg-purple-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full mt-1 ml-auto">
+            {{ c.unread }}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ✅ FIXED BOTTOM NAV -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white p-3 border-t">
+
+    <div class="flex justify-around items-center bg-gray-100 rounded-full p-2 shadow-sm">
+
+      <!-- ✅ ACTIVE CHAT -->
+      <div class="px-6 py-2 rounded-full bg-gradient-to-r from-purple-800 to-purple-500 text-white flex items-center gap-2 shadow">
+        <img src="https://www.svgrepo.com/show/533238/message-circle-dots.svg" class="w-5 h-5 icon-white">
+        <span class="text-sm">Chats</span>
+      </div>
+
+      <!-- DISCOVER -->
+      <div class="w-10 h-10 flex items-center justify-center">
+        <img src="https://www.svgrepo.com/show/532239/compass.svg" class="w-5 h-5 icon-gray">
+      </div>
+
+      <!-- OTHER -->
+      <div class="w-10 h-10 flex items-center justify-center">
+        <img src="https://www.svgrepo.com/show/532659/sparkles.svg" class="w-5 h-5 icon-gray">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+  data() {
+    return {
+      stories: [
+        { name: "Precious", img: "https://favouradjenuvurhe.github.io/Dating-Me/img/images (28).jpeg" },
+        { name: "Sofia", img: "https://favouradjenuvurhe.github.io/Dating-Me/img/images (29).jpeg" },
+        { name: "Daniel", img: "https://favouradjenuvurhe.github.io/Dating-Me/img/images (31).jpeg" },
+        { name: "Grace", img: "https://favouradjenuvurhe.github.io/Dating-Me/img/images (30).jpeg" },
+        { name: "John", img: "https://favouradjenuvurhe.github.io/Dating-Me/img/images (32).jpeg" }
+      ],
+      chats: [
+        { name: "John", message: "Pulsepoint, we're building the future...", time: "1:04pm", unread: 1, online: true, img: "https://favouradjenuvurhe.github.io/Dating-Me/img/images (32).jpeg" },
+        { name: "Sofia", message: "We are going to offer you 25% stake in...", time: "12:33pm", unread: null, online: false, img: "https://favouradjenuvurhe.github.io/Dating-Me/img/images (29).jpeg" },
+        { name: "Precious", message: "Understood, I will contact you later.", time: "12:09 PM", unread: 3, online: true, img: "https://favouradjenuvurhe.github.io/Dating-Me/img/images (28).jpeg" },
+        { name: "Grace", message: "Yes, we are based in Singapore...", time: "1:04 PM", unread: 1, online: true, img: "https://favouradjenuvurhe.github.io/Dating-Me/img/images (30).jpeg" },
+        { name: "Daniel", message: "Looking forward to having you onboard.", time: "11:48 AM", unread: null, online: true, img: "https://favouradjenuvurhe.github.io/Dating-Me/img/images (31).jpeg" }
+      ]
+    }
+  }
+}).mount('#app');
+</script>
+
+</body>
+      </html>
