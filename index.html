@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Clone Mobile</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Vue -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <style>
+    body {
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .glass {
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.7);
+    }
+
+    .icon-gray {
+      filter: brightness(0) saturate(100%) invert(60%) sepia(6%) saturate(300%) hue-rotate(180deg);
+    }
+
+    .icon-white {
+      filter: brightness(0) invert(1);
+    }
+
+    .icon-black {
+      filter: brightness(0);
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="app" class="w-full min-h-screen flex flex-col">
+
+  <!-- SCROLL AREA -->
+  <div class="flex-1 overflow-y-auto p-4 pb-28">
+
+    <!-- HEADER -->
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center gap-3">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIBCwDOhXBGK_6Jit5aT4A5jznqEyL4URFKm4Rjn-mwWRz8jtJtXZ6K4Mb&s=10" class="w-10 h-10 rounded-full">
+        <div>
+          <p class="text-xs text-gray-400">Hi, favour</p>
+          <p class="text-sm font-semibold">Delta, Nigeria</p>
+        </div>
+      </div>
+
+      <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+        <img src="https://www.svgrepo.com/show/528866/bell.svg" class="w-5 h-5 icon-gray">
+      </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="mb-4">
+      <p class="text-sm font-semibold mb-2">Categories</p>
+
+      <div class="flex gap-2 overflow-x-auto pb-1">
+        <button class="px-4 py-2 rounded-full bg-gradient-to-r from-purple-800 to-purple-500 text-white text-sm whitespace-nowrap">
+          Influence
+        </button>
+
+        <button class="px-4 py-2 rounded-full bg-gray-100 text-gray-500 text-sm whitespace-nowrap">
+          E Commerce
+        </button>
+        
+        <button class="px-4 py-2 rounded-full bg-gray-100 text-gray-500 text-sm whitespace-nowrap">
+          Finance
+        </button>
+
+        <button class="px-4 py-2 rounded-full bg-gray-100 text-gray-500 text-sm whitespace-nowrap">
+          Health care
+        </button>
+
+        <button class="px-4 py-2 rounded-full bg-gray-100 text-gray-500 text-sm whitespace-nowrap">
+          Real Estate
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="relative rounded-[25px] overflow-hidden shadow-md mb-6">
+
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/20352e138645739.622119b67fa9a.png"
+           class="w-full h-[55vh] object-cover">
+
+      <div class="absolute inset-0 bg-black/30"></div>
+
+      <!-- LOCATION -->
+      <div class="absolute top-3 right-3 glass px-3 py-1 rounded-full flex items-center gap-1 text-xs text-white">
+        <img src="https://www.svgrepo.com/show/522166/location.svg" class="w-3 h-3 icon-white">
+        Lagos, Nigeria
+      </div>
+
+      <!-- CONTENT -->
+      <div class="absolute bottom-4 left-4 right-4 text-white">
+        <h2 class="font-semibold text-lg">Ijeoma Josephina Otabor</h2>
+
+        <p class="text-xs flex items-center gap-2 mt-1">
+          <span class="bg-yellow-400 w-4 h-4 rounded-full flex items-center justify-center text-black text-[10px]">✓</span>
+          Ex-BBN Winner Phyna
+        </p>
+
+        <p class="text-xs mt-2 leading-relaxed text-gray-200">
+          Big Brother Naija Season 7 (Level Up) in October 2022, becoming the second female winner in the show's history
+        </p>
+      </div>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="flex justify-center gap-6 mb-6">
+
+      <button class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
+        <img src="https://www.svgrepo.com/show/510921/close-lg.svg" class="w-5 h-5 icon-gray">
+      </button>
+
+      <button class="w-16 h-16 rounded-full bg-gradient-to-r from-purple-800 to-purple-500 flex items-center justify-center shadow-lg">
+        <img src="https://www.svgrepo.com/show/533238/message-circle-dots.svg" class="w-6 h-6 icon-white">
+      </button>
+
+      <button class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
+        <img src="https://www.svgrepo.com/show/502870/thumbs-up.svg" class="w-5 h-5 icon-gray">
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- FIXED BOTTOM NAV -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white p-3 border-t">
+
+    <div class="flex justify-around items-center bg-gray-100 rounded-full p-2 shadow-sm">
+
+      <div class="w-10 h-10 flex items-center justify-center">
+        <img src="https://www.svgrepo.com/show/533238/message-circle-dots.svg" class="w-5 h-5 icon-gray">
+      </div>
+
+      <div class="px-6 py-2 rounded-full bg-gradient-to-r from-purple-800 to-purple-500 text-white flex items-center gap-2 shadow">
+        <img src="https://www.svgrepo.com/show/532239/compass.svg" class="w-5 h-5 icon-white">
+        <span class="text-sm">Discover</span>
+      </div>
+
+      <div class="w-10 h-10 flex items-center justify-center">
+        <img src="https://www.svgrepo.com/show/532659/sparkles.svg" class="w-5 h-5 icon-gray">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+const { createApp } = Vue;
+createApp({}).mount('#app');
+</script>
+
+</body>
+</html>
